@@ -11,9 +11,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AudioPlayer">
         <service
-            android:name=".PauseService"
+            android:name=".PlayService"
             android:enabled="true"
             android:exported="true"></service>
+        <service
+            android:name=".PauseService"
+            android:enabled="true"
+            android:exported="true" />
 
         <activity android:name=".MainActivity">
             <intent-filter>

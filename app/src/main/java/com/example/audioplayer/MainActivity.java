@@ -178,7 +178,7 @@ public class MainActivity extends Activity {
         String song = path.substring(p+1);
 
         //  Used to create channel for notification with unique id
-        NotificationChannel channel = new NotificationChannel("1001","My Music",
+        NotificationChannel channel = new NotificationChannel("1001","Current Music",
                 NotificationManager.IMPORTANCE_HIGH);
 
         //  Used to create intent for activity but to call later so keep it pending
@@ -188,6 +188,9 @@ public class MainActivity extends Activity {
         Intent intent1 = new Intent(getApplicationContext(), PauseService.class);
         PendingIntent pendingIntent1 = PendingIntent.getService(this, 0, intent1, 0);
 
+        Intent intent2 = new Intent(getApplicationContext(), PlayService.class);
+        PendingIntent pendingIntent2 = PendingIntent.getService(this, 0, intent2, 0);
+
 
 
         // Used to build view for notification
@@ -196,7 +199,8 @@ public class MainActivity extends Activity {
                 .setContentText("Favorite Song")
                 .setSmallIcon(R.drawable.ic_play)
                 .setContentIntent(pendingIntent)
-                .addAction(android.R.drawable.ic_media_pause,"Pause", pendingIntent1);
+                .addAction(android.R.drawable.ic_media_pause,"Pause", pendingIntent1)
+                .addAction(android.R.drawable.ic_media_play, "Play", pendingIntent2);
 
         NotificationManager manager = getSystemService(NotificationManager.class);
 
